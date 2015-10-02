@@ -65,7 +65,8 @@ if (!$errors) {
 		   $rating = $_POST['rating'];
             echo "Thank you for your email!<br/><br/>";
 			
-$sql = "INSERT INTO august (Name) VALUES ('$name')";
+$sql = "INSERT INTO august (Name,Cat,Date,Synopsis,Detail,Tips,Rating) 
+        VALUES ('$name','$cat','$date','$synopsis','$detail','$tips','$rating')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
