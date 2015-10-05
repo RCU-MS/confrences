@@ -55,6 +55,8 @@ if ($_POST['tips'] != "") {
     $errors .= 'Please enter tips to send.<br/>';
 }
 
+
+$monthArray = array("null", "january", "february","march","april","may","june","july","august","september","october","november","december"); 
 if (!$errors) {
            $name = $_POST['name'];
 		   $cat = $_POST['optRadio'];
@@ -63,10 +65,14 @@ if (!$errors) {
 		   $detail = $_POST['detail'];
 		   $tips = $_POST['tips'];
 		   $rating = $_POST['rating'];
-            echo "Thank you for your email!<br/><br/>";
-			
-$sql = "INSERT INTO august (Name,Cat,Date,Synopsis,Detail,Tips,Rating) 
+           $dateExtract = substr($date,0,2);
+           $dateNumCast = (int)$dateExtract;
+          
+          echo $cat;    
+$sql = "INSERT INTO ".$monthArray[$dateNumCast]." (Name,Cat,Date,Synopsis,Detail,Tips,Rating) 
         VALUES ('$name','$cat','$date','$synopsis','$detail','$tips','$rating')";
+        
+echo $sql;
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
