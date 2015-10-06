@@ -68,11 +68,21 @@ if (!$errors) {
            $dateExtract = substr($date,0,2);
            $dateNumCast = (int)$dateExtract;
           
-          echo $cat;    
-$sql = "INSERT INTO ".$monthArray[$dateNumCast]." (Name,Cat,Date,Synopsis,Detail,Tips,Rating) 
+             
+if ($cat == "conference"){
+    
+  
+    $sql = "INSERT INTO conferences (name,category,date,synopsis,detail,tips,rating) 
+        VALUES ('$name','$cat','$date','$synopsis','$detail','$tips','$rating')"; 
+        
+        $conn->query($sql);
+          
+}
+
+$sql = "INSERT INTO ".$monthArray[$dateNumCast]." (name,category,date,synopsis,detail,tips,rating) 
         VALUES ('$name','$cat','$date','$synopsis','$detail','$tips','$rating')";
         
-echo $sql;
+
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
