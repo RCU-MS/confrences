@@ -12,11 +12,12 @@
         $(document).ready(function(){
                      str = window.location.href;
                      pos = str.search("pages/"); //49
-                     send = str.slice(47, -5);
-					 title = send;
-                     document.getElementById("head").innerHTML = "CONFERENCES";
+                     send = str.slice(46, -5);
+                     console.log(send);
+					           title = send;
+                     document.getElementById("head").innerHTML = "PUBLICATIONS";
                      document.getElementById("headerMonth").innerHTML = "Showing <i>all publications</i>";
-                    $.get("retrieve.php?id="+send, function(data, status){ $("#main").html(data); });//end AJAX GET request
+                    $.get("../months/retrieve.php?id="+send, function(data, status){ $("#main").html(data); });//end AJAX GET request
                 });//end document on Ready AJAX
        </script>
     </head>
@@ -44,7 +45,8 @@
              <div class="blog-post">
                <h2 class="blog-post-title" id = "title"></h2>
                <i id = "cat"></i>
-               <p class="blog-post-meta" id = "date"><a href="#"></a></p>
+               <p class="blog-post-meta" id = "date"><a id = "date-link" href="#"></a></p>
+               <i id = "submitter" style = "color: color: #999;"><a id = "submit-link" href=""></a></i>
                <p><i id = "synopsis"></i></p>
                <hr>
                <p><i id = "detail"></i><a href="#"></p>
@@ -76,6 +78,7 @@
                 </ol>
               </div><!--./sidebar-module -->
               <div class="sidebar-module"> <!-- Side of page (categories) -->
+               <!--
                 <h4>Category</h4>
                 <ol class="list-unstyled">
                   <li><a href="../cats/tech.html">Tech/IT</a></li>
@@ -86,6 +89,7 @@
                   <li><a href="../cats/wd.html">Workforce Development</a></li>
                   <li><a href="../cats/misc.html">Misc.</a></li>
                 </ol>
+                -->
               </div><!--./sidebar-module -->
             </div><!-- /.blog-sidebar -->
           </div><!-- /.row 1-->

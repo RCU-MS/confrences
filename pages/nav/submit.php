@@ -58,9 +58,15 @@ if ($_POST['tips'] != "") {
 
 $monthArray = array("null", "january", "february","march","april","may","june","july","august","september","october","november","december"); 
 if (!$errors) {
+    
+           
+           $submitName = $_POST['submitName'];
+           $submitEmail = $_POST['submitEmail'];     
            $name = $_POST['name'];
 		   $cat = $_POST['optRadio'];
+           $catType= $_POST['list'];
 		   $date = $_POST['date'];
+           $link = $_POST['link'];
 		   $synopsis = $_POST['synopsis'];
 		   $detail = $_POST['detail'];
 		   $tips = $_POST['tips'];
@@ -69,18 +75,32 @@ if (!$errors) {
            $dateNumCast = (int)$dateExtract;
           
              
-if ($cat == "conference"){
+switch($cat){
     
-  
-    $sql = "INSERT INTO conferences (name,category,date,synopsis,detail,tips,rating) 
-        VALUES ('$name','$cat','$date','$synopsis','$detail','$tips','$rating')"; 
+    case "conference":
+       $sql = "INSERT INTO conferences (email,user,name,category,categorytype,date,link,synopsis,detail,tips,rating) 
+        VALUES ('$submitName','$submitEmail','$name','$cat','$catType','$date','$link','$synopsis','$detail','$tips','$rating')"; 
         
-        $conn->query($sql);
+       $conn->query($sql);
+       echo "Error: " . $sql . "<br>" . $conn->error;
+    
+       break;
+   
+   case "publication":
+       $sql = "INSERT INTO publications (email,user,name,category,categorytype,date,link,synopsis,detail,tips,rating) 
+        VALUES ('$submitName','$submitEmail','$name','$cat','$catType','$date','$link','$synopsis','$detail','$tips','$rating')"; 
+        
+       $conn->query($sql);
+       break;
+   
+   default:
+       echo "no category matches";
           
 }
 
-$sql = "INSERT INTO ".$monthArray[$dateNumCast]." (name,category,date,synopsis,detail,tips,rating) 
-        VALUES ('$name','$cat','$date','$synopsis','$detail','$tips','$rating')";
+
+$sql = "INSERT INTO ".$monthArray[$dateNumCast]." (email,user,name,category,categorytype,date,link,synopsis,detail,tips,rating) 
+        VALUES ('$submitName','$submitEmail','$name','$cat','$catType','$date','$link','$synopsis','$detail','$tips','$rating')"; 
         
 
 
@@ -94,4 +114,8 @@ if ($conn->query($sql) === TRUE) {
         }
 		
 }//end confirmation
+
+header("Location: confirm.html");
+die();
+
 ?>

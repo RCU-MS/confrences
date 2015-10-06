@@ -32,13 +32,27 @@
 
         <div class="col-sm-8 blog-main">
           <form method="post" action="submit.php">
-            <i> Name of Event/Publication: </i><input  name = "name" class = "form-control"type = "text"><br>
-            <i> Category: </i>&nbsp<label><input type="radio" value = "conference" name="optRadio">Conference</label>&nbsp &nbsp<label><input value = "publication" type="radio" name="optRadio">Publication</label><br>
-            <i> Deadline to register/submit: </i><input name = "date" id = "date" class = "form-control"type = "text"> <br>
-            <i> Synopsis: </i><input name = "synopsis" style = "height: 100px" class = "form-control"type = "text"><br>
-            <i name = "detail"> Detail: </i><input  name = "detail" style = "height: 200px" class = "form-control"type = "text"><br>
-            <i> Application Tips: </i><input name = "tips" style = "height: 100px" class = "form-control"type = "text"><br>
-            <i> Publication/Confrence Rating:</i> <input name = "rating" id = "rate" onchange= "go()" type="range" name="points" min="0" max="10">
+            <i> Name of Submitter: </i><input  name = "submitName" class = "form-control"type = "text" required><br>
+            <i> Email of Submitter: </i><input  name = "submitEmail" class = "form-control"type = "email" required><br>
+            <i> Name of Event/Publication: </i><input  name = "name" class = "form-control"type = "text" required><br>
+            <i> Conference or Publication: </i>&nbsp<label><input type="radio" value = "conference" name="optRadio" required>Conference</label>&nbsp &nbsp<label><input value = "publication" type="radio" name="optRadio" required>Publication</label><br>
+            <i> Category: </i>
+            <select class = "form-control" name = "list" required>
+              <option value=""></option>
+              <option value="Tech/IT">Tech/IT</option>
+              <option value="Professional Learning">Professional Learning</option>
+              <option value="STEM">STEM</option>
+              <option value="Evaluation/Assessment">Evaluation/Assessment</option>
+              <option value="Curriculum">Curriculum</option>
+              <option value="Workforce Development">Workforce Development</option>
+              <option value="Misc.">Misc.</option>
+            </select> <br>
+            <i> Deadline to register/submit: </i><input name = "date" id = "date" class = "form-control"type = "text" required> <br>
+            <i> Link to Register/Submit: </i><textarea  name = "link" style = "max-width: 800px" class = "form-control"type = "url" required></textarea><br>
+            <i> Synopsis: </i><textarea name = "synopsis" style = "max-width: 800px" class = "form-control"type = "text" required></textarea><br>
+            <i name = "detail"> Detail: </i><textarea  name = "detail" style = "max-width: 800px" class = "form-control"type = "text" required></textarea><br>
+            <i> Tips: </i><textarea name = "tips" style = "max-width: 800px" class = "form-control"type = "text" required></textarea><br>
+            <i> Publication/Confrence Rating:</i> <input name = "rating" id = "rate" onchange= "go()" type="range" name="points" min="0" max="10" required></textarea>
             <i id = "rateValue"> </i><br> 
             <center> <button type = "submit" class = "btn btn-success" name = "Submit">Submit</button> </center><br>
           </form>
@@ -69,6 +83,7 @@
                 </ol>
               </div><!--./sidebar-module -->
               <div class="sidebar-module"> <!-- Side of page (categories) -->
+                <!--
                 <h4>Category</h4>
                 <ol class="list-unstyled">
                   <li><a href="../cats/tech.html">Tech/IT</a></li>
@@ -79,6 +94,7 @@
                   <li><a href="../cats/wd.html">Workforce Development</a></li>
                   <li><a href="../cats/misc.html">Misc.</a></li>
                 </ol>
+                -->
           </div>
         </div><!-- /.blog-sidebar -->
 
