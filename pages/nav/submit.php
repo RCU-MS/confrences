@@ -55,17 +55,54 @@ if ($_POST['tips'] != "") {
     $errors .= 'Please enter tips to send.<br/>';
 }
 
+
+$monthArray = array("null", "january", "february","march","april","may","june","july","august","september","october","november","december"); 
 if (!$errors) {
+    
+           
+           $submitName = $_POST['submitName'];
+           $submitEmail = $_POST['submitEmail'];     
            $name = $_POST['name'];
 		   $cat = $_POST['optRadio'];
+           $catType= $_POST['list'];
 		   $date = $_POST['date'];
+           $link = $_POST['link'];
 		   $synopsis = $_POST['synopsis'];
 		   $detail = $_POST['detail'];
 		   $tips = $_POST['tips'];
 		   $rating = $_POST['rating'];
-            echo "Thank you for your email!<br/><br/>";
-			
-$sql = "INSERT INTO august (Name) VALUES ('$name')";
+           $dateExtract = substr($date,0,2);
+           $dateNumCast = (int)$dateExtract;
+          
+             
+switch($cat){
+    
+    case "conference":
+       $sql = "INSERT INTO conferences (email,user,name,category,categorytype,date,link,synopsis,detail,tips,rating) 
+        VALUES ('$submitName','$submitEmail','$name','$cat','$catType','$date','$link','$synopsis','$detail','$tips','$rating')"; 
+        
+       $conn->query($sql);
+       echo "Error: " . $sql . "<br>" . $conn->error;
+    
+       break;
+   
+   case "publication":
+       $sql = "INSERT INTO publications (email,user,name,category,categorytype,date,link,synopsis,detail,tips,rating) 
+        VALUES ('$submitName','$submitEmail','$name','$cat','$catType','$date','$link','$synopsis','$detail','$tips','$rating')"; 
+        
+       $conn->query($sql);
+       break;
+   
+   default:
+       echo "no category matches";
+          
+}
+
+
+$sql = "INSERT INTO ".$monthArray[$dateNumCast]." (email,user,name,category,categorytype,date,link,synopsis,detail,tips,rating) 
+        VALUES ('$submitName','$submitEmail','$name','$cat','$catType','$date','$link','$synopsis','$detail','$tips','$rating')"; 
+        
+
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -77,4 +114,8 @@ if ($conn->query($sql) === TRUE) {
         }
 		
 }//end confirmation
+
+header("Location: confirm.html");
+die();
+
 ?>

@@ -12,10 +12,10 @@
         $(document).ready(function(){
                      str = window.location.href;
                      pos = str.search("pages/"); //49
-                     send = str.slice(49, -5);
+                     send = str.slice(46, -5);
 					 title = send;
                      document.getElementById("head").innerHTML = title.toUpperCase();
-                     document.getElementById("headerMonth").innerHTML = "Conferences and Publications for the month of <i>" + title + "</i>";
+                     document.getElementById("headerMonth").innerHTML = "Using the form below, please send any feedback for the website";
                     $.get("retrieve.php?id="+send, function(data, status){ $("#main").html(data); });//end AJAX GET request
                 });//end document on Ready AJAX
        </script>
@@ -25,11 +25,11 @@
         <div class="blog-masthead">
           <div class="container">
             <nav class="blog-nav">
-              <a class="blog-nav-item active" href="../../index.html">Home</a>
+              <a class="blog-nav-item" href="../../index.html">Home</a>
               <a class="blog-nav-item" href="conferences.html">Confrences</a>
               <a class="blog-nav-item" href="publications.html">Publications</a>
               <a class="blog-nav-item" href="submission.html">Submissions</a>
-              <a class="blog-nav-item" href="feedback.html">Feedback</a>
+              <a class="blog-nav-item active" href="feedback.html">Feedback</a>
             </nav>
           </div><!--./container 1 -->
         </div><!-- ./blog-masthead -->
@@ -41,16 +41,12 @@
           </div>
          <div class="row"> <!-- row 1 -->
            <div class="col-sm-8 blog-main" id = "main">  
-             <div class="blog-post">
-               <h2 class="blog-post-title" id = "title"></h2>
-               <i id = "cat"></i>
-               <p class="blog-post-meta" id = "date"><a href="#"></a></p>
-               <p><i id = "synopsis"></i></p>
-               <hr>
-               <p><i id = "detail"></i><a href="#"></p>
-               <p id = "tips"><i></i></p>
-               <p style = "color:green;" id = "rate"><i></i></p>
-             </div><!-- /.blog-post -->     
+              <form action = "feedback.php" method = "post" >
+               Your Name: <input type = "text" class = "form-control" name = "name" id = "name"required><br>
+               Your Email: <input class = "form-control" type = "email" name = "email" id = "email" required><br>
+               Message: <textarea class = "form-control" name = "feedback" id = "feedback" style = "max-width: 800px; max-height: 800px;" required></textarea><br>
+                 <button name = "submit" type = "submit" class = "btn btn-success"> Send Feedback </button>
+              </form>
            </div><!-- /.blog-main -->
            
            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
@@ -76,6 +72,7 @@
                 </ol>
               </div><!--./sidebar-module -->
               <div class="sidebar-module"> <!-- Side of page (categories) -->
+              <!--
                 <h4>Category</h4>
                 <ol class="list-unstyled">
                   <li><a href="../cats/tech.html">Tech/IT</a></li>
@@ -86,7 +83,9 @@
                   <li><a href="../cats/wd.html">Workforce Development</a></li>
                   <li><a href="../cats/misc.html">Misc.</a></li>
                 </ol>
+                -->
               </div><!--./sidebar-module -->
+             
             </div><!-- /.blog-sidebar -->
           </div><!-- /.row 1-->
         </div><!-- /.container 2 -->
