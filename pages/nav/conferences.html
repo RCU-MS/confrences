@@ -12,7 +12,8 @@
         $(document).ready(function(){
                      str = window.location.href;
                      pos = str.search("pages/"); //49
-                     send = str.slice(46, -5);
+                     send = str.slice(46, -6);
+                     console.log(send);
 					           title = send;
                      document.getElementById("head").innerHTML = "CONFERENCES";
                      document.getElementById("headerMonth").innerHTML = "Showing <i>all conferences</i>";

@@ -18,7 +18,15 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-$sql = "SELECT * FROM ".$urlExtract;
+
+if($urlExtract == "conference" || $urlExtract == "publication" )
+{
+    $sql = "SELECT * FROM data WHERE category = '$urlExtract'";
+}
+else{
+  $sql = "SELECT * FROM data WHERE month = '$urlExtract'";
+}
+
 $result = $conn->query($sql);
 //echo $sql;
 

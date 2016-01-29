@@ -94,13 +94,11 @@ switch($cat){
        break;
    
    default:
-       echo "no category matches";
-          
 }
 
 
-$sql = "INSERT INTO ".$monthArray[$dateNumCast]." (email,user,name,category,categorytype,date,link,synopsis,detail,tips,rating) 
-        VALUES ('$submitName','$submitEmail','$name','$cat','$catType','$date','$link','$synopsis','$detail','$tips','$rating')"; 
+$sql = "INSERT INTO data (email,user,name,category,categorytype,date,link,synopsis,detail,tips,rating,month) 
+        VALUES ('$submitName','$submitEmail','$name','$cat','$catType','$date','$link','$synopsis','$detail','$tips','$rating','$monthArray[$dateNumCast]')"; 
         
 
 
